@@ -2,3 +2,5 @@
 [Dd]ist*
 [Bb]in*
 package-lock.json
+node_modules
+logs

@@ -1,26 +1,9 @@
 version: '3.7'
 
 services:
-    web:
-        container_name: web
-        build: .
-        restart: always
-        env_file:
-            - .env
-        volumes:
-            - .:/usr/src/app
-            - /usr/src/app/node_modules
-        depends_on:
-            - db
-        links:
-            - db
-        ports:
-            - ${APP_PORT}:${APP_PORT}
-        command: npm run dev
-
     db:
         image: mongo:latest
-        container_name: db
+        container_name: todo_database
         restart: always
         env_file:
             - .env
@@ -33,5 +16,21 @@ services:
             MONGO_INITDB_PASSWORD: ${DB_PASSWORD}
             MONGO_INITDB_DATABASE: ${DB_DATABASE}
 
+  #  web:
+  #         container_name: todo_web
+  #          build: .
+  #          restart: always
+  #          env_file:
+  #              - .env
+  #          volumes:
+  #              - ./:/src/
+  #              - node_modules
+  #          depends_on:
+  #              - db
+  #          links:
+  #              - db
+  #         ports:
+  #              - ${APP_PORT}:${APP_PORT}
+  #          command: npm run dev:watch
 volumes:
     dbdata-volume:

@@ -10,4 +10,4 @@ RUN npm install
 
 COPY . .
 
-CMD ["npm", "dev"] || ["yarn", "dev"]
+CMD ["npm", "start"] || ["yarn", "start"]
