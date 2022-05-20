@@ -18,7 +18,7 @@ export async function createTask(req: Request, res: Response) {
 
 export async function findTaskById(req: Request, res: Response) {
   try {
-    const id = req.params.id;
+    const id = req.params._id;
     const task = await TaskModel.findById(id);
 
     if (!task) {
@@ -42,12 +42,14 @@ export async function getAllTasks(req: Request, res: Response) {
 
 export async function removeTask(req: Request, res: Response) {
   try {
-    const id = req.params.id;
+    const id = req.params._id;
     const task = await TaskModel.findById(id);
 
     if (!task) {
       return res.status(404).json({ error: "task does not exist." });
     }
+
+    console.log(task);
 
     await task.delete();
 
@@ -59,7 +61,7 @@ export async function removeTask(req: Request, res: Response) {
 
 export async function updateTask(req: Request, res: Response) {
   try {
-    const id = req.params.id;
+    const id = req.params._id;
     const data = req.body;
     const task = await TaskModel.findById(id);
 

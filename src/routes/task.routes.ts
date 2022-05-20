@@ -6,12 +6,13 @@ import {
   updateTask,
   removeTask,
 } from "../controllers/TaskController";
+import { validate } from "../middlewares/validationMiddleware";
 
 const router = Router();
 
 export default router
-  .post("/task", createTask)
-  .get("/task", getAllTasks)
-  .get("/task/:id", findTaskById)
-  .put("/task/:id", updateTask)
-  .delete("/task/:id", removeTask);
+  .post("/task", validate, createTask)
+  .get("/task", validate, getAllTasks)
+  .get("/task/:id", validate, findTaskById)
+  .put("/task/:id", validate, updateTask)
+  .delete("/task/:id", validate, removeTask);
