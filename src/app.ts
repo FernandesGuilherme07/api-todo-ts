@@ -10,6 +10,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+
 app.use(`${APP_VERSION}`, TaskRoutes);
 app.use(morganMiddleware);
 
